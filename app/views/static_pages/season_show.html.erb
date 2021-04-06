@@ -1,0 +1,22 @@
+<%= render 'layouts/navbar' %>
+<%= link_to "Atrás", :back %>
+
+<h2><%= @results[0]["series"] %></h2>
+<h3>Temporada <%= @results[0]["season"] %></h3>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>N°</th>
+      <th>Nombre episodio </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |epi| %>
+      <tr>
+        <td><%= epi["episode"] %></td>
+        <td><%= link_to epi["title"], home_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

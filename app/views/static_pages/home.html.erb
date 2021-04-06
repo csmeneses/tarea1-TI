@@ -1,13 +1,39 @@
-<h1>Hola Wachin</h1>
-<img src=<%= @results[0]["img"] %>>
-<%= @results[0] %>
+<%= render 'layouts/navbar' %>
 
+<h1>Temporadas</h1>
 
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
+<p>A continuación puedes revisar las temporadas de ambas series y seleccionar alguna para ver el detalle.</p>
+
+<h2>Breaking Bad</h2>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Tamporadas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results[:bb].each do |season| %>
+      <tr>
+        <td><%= link_to "Temporada #{season}", season_show_path(season, :bb) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Better Call Saul</h2>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Tamporadas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results[:bcs].each do |season| %>
+      <tr>
+        <td><%= link_to "Temporada #{season}", season_show_path(season, :bcs) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

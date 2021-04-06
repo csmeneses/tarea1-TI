@@ -1,0 +1,42 @@
+<%= render 'layouts/navbar' %>
+<%= link_to "Atrás", :back %>
+
+<h1>Detalle Episodio <%= @results["episode"] %></h1>
+<h2><%= @results["series"] %></h2>
+<h3>Temporada <%= @results["season"] %></h3>
+<h4>Información</h4>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>N°</th>
+      <th>Título</th>
+      <th>Temporada</th>
+      <th>Estreno</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @results["episode"] %></td>
+      <td><%= @results["title"] %></td>
+      <td><%= @results["season"] %></td>
+      <td><%= @results["air_date"].to_date %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Personajes en este episodio</h4>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results["characters"].each do |person| %>
+      <tr>
+        <td><%= link_to person, character_show_path(person) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,77 @@
+<%= render 'layouts/navbar' %>
+<%= link_to "Atrás", :back %>
+
+<h1><%= @results["name"] %></h1>
+<h2>(alias <%= @results["nickname"] %>)</h2>
+
+<h4>Actor/a: <%= @results["portrayed"] %></h4>
+
+<%= image_tag(@results["img"], :alt => "Foto no disponible", class: "profile-pic")%>
+
+<% unless @results["birthday"].nil? %>
+  <h4>Nacimiento: <%= @results["birthday"] %></h4>
+<% end %>
+
+<h4>Ocupaciones:</h4>
+<ul>
+  <% @results["occupation"].each do |ocu| %>
+  <li><%= ocu %></li>
+  <% end %>
+</ul>
+
+<h4>Estado: <%= @results["status"] %></h4>
+
+<h4>Apariciones en Breaking Bad</h4>
+<% if @results["appearance"].empty? %>
+  <p>No se registran apariciones en esta serie</p>
+<% else %>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Tamporadas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results["appearance"].each do |season| %>
+        <tr>
+          <td><%= link_to "Temporada #{season}", season_show_path(season, :bb) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h4>Apariciones en Better Call Saul</h4>
+<% if @results["better_call_saul_appearance"].empty? %>
+  <p>No se registran apariciones en esta serie</p>
+<% else %>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Tamporadas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results["better_call_saul_appearance"].each do |season| %>
+        <% if season != 5 %>
+          <tr>
+            <td><%= link_to "Temporada #{season}", season_show_path(season, :bcs) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h4>Citas:</h4>
+<% if @quotes.empty? %>
+  <p>No se registran citas para este personaje</p>
+<% else %>
+  <ul>
+    <% @quotes.each do |quote| %>
+      <li><%= "#{quote['quote']} (#{quote['series']})" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%# Ojo que a veces pueden aparecer en BCS: poner una tabla extra %>

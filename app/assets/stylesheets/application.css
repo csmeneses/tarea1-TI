@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.profile-pic {
+  width: 15rem;
+}

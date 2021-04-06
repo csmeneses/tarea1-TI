@@ -37,4 +37,20 @@ class StaticPagesController < ApplicationController
     end
     @results = season_episodes
   end
+
+  def episode_show
+    episode_id = params[:episode_id]
+    response = RestClient.get(@@base_url + "episodes/#{episode_id}")
+    episodes = JSON.parse(response.to_str)
+    @results = episodes[0]
+  end
+
+  def character_show
+    character_name = params[:character_name]
+    response = RestClient.get(@@base_url + "characters?name=#{character_name}")
+    characters = JSON.parse(response.to_str)
+    @results = characters[0]
+    response = RestClient.get(@@base_url + "quote?author=#{character_name}")
+    @quotes = JSON.parse(response.to_str)
+  end
 end

@@ -1,23 +1,37 @@
 <%= render 'layouts/navbar' %>
 <%= link_to "Atrás", :back %>
 
-<h1>Episodios</h1>
-<h2><%= @results[0]["series"] %></h2>
-<h3>Temporada <%= @results[0]["season"] %></h3>
 
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th>N°</th>
-      <th>Título</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @results.each do |epi| %>
-      <tr>
-        <td><%= epi["episode"] %></td>
-        <td><%= link_to epi["title"], episode_show_path(epi["episode_id"]) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1>Episodios</h1>
+      <h2><%= @results[0]["series"] %> | Temporada <%= @results[0]["season"] %></h2>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag "#{@serie_id}_S#{@season}.jpg", class: "img-thumbnail" %>
+    </div>
+    <div class="col-8">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Título</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |epi| %>
+            <tr>
+              <td><%= epi["episode"] %></td>
+              <td><%= link_to epi["title"], episode_show_path(epi["episode_id"]), class: "my-table-text" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

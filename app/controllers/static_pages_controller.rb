@@ -36,6 +36,8 @@ class StaticPagesController < ApplicationController
       end
     end
     @results = season_episodes
+    @serie_id = serie
+    @season = season
   end
 
   def episode_show
@@ -43,6 +45,19 @@ class StaticPagesController < ApplicationController
     response = RestClient.get(@@base_url + "episodes/#{episode_id}")
     episodes = JSON.parse(response.to_str)
     @results = episodes[0]
+    if episodes[0]["series"] == "Breaking Bad"
+      @image_path = "/fotos/Breaking_Bad_logo.png"
+    else
+      @image_path = "/fotos/BCS_logo.png"
+    end
+    # Si está muy lento borrar desde acá
+    # @characters = {}
+    # @results["characters"].each do |char|
+    #   response = RestClient.get(@@base_url + "characters?name=#{char}")
+    #   characters = JSON.parse(response.to_str)
+    #   result = characters[0]
+    #   @characters[char] = result["img"]
+    # end
   end
 
   def character_show

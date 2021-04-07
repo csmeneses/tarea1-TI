@@ -1,17 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "Breaking Ask", home_path, class: "navbar-brand" %>
+<nav class="navbar navbar-expand-lg my-navbar">
+  <%= link_to "Breaking Ask", home_path, class: "navbar-brand my-navbar-text" %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to "Temporadas", home_path, class: "nav-link" %>
+        <%= link_to "Temporadas", home_path, class: "nav-link my-navbar-text" %>
       </li>
     </ul>
   </div>
   <div>
     <%= form_with(method: :post, url: character_search_path) do |form| %>
-      <%= form.text_field :character_input, placeholder: "Personaje" %>
-      <%=form.submit 'Buscar', class: "btn btn-outline-success my-2 my-sm-0" %>
+      <%= form.text_field :character_input, placeholder: "Personaje", class: "form-control-sm" %>
+      <%=form.submit 'Buscar', class: "btn btn-sm btn-outline-success my-2 my-sm-0" %>
     <% end %>
   </div>
 </nav>

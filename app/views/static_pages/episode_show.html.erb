@@ -1,42 +1,31 @@
 <%= render 'layouts/navbar' %>
 <%= link_to "Atrás", :back %>
 
-<h1>Detalle Episodio <%= @results["episode"] %></h1>
-<h2><%= @results["series"] %></h2>
-<h3>Temporada <%= @results["season"] %></h3>
-<h4>Información</h4>
-
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th>N°</th>
-      <th>Título</th>
-      <th>Temporada</th>
-      <th>Estreno</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @results["episode"] %></td>
-      <td><%= @results["title"] %></td>
-      <td><%= @results["season"] %></td>
-      <td><%= @results["air_date"].to_date %></td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>Personajes en este episodio</h4>
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag @image_path, class: "img-thumbnail" %>
+    </div>
+    <div class="col-9">
+      <h1><%= @results["title"] %></h1>
+      <h2>Temporada <%= @results["season"] %> | Episodio <%= @results["episode"] %></h2>
+      <h5>Estreno: <%= @results["air_date"].to_date %></h5>
+    </div>
+  </div>
+  <br>
+  <h4>Personajes en este episodio</h4>
+  <div class="row">
+      
     <% @results["characters"].each do |person| %>
-      <tr>
-        <td><%= link_to person, character_show_path(person) %></td>
-      </tr>
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= person %></h5>
+            <%= link_to "Información", character_show_path(person), class: "btn btn-success" %>
+          </div>
+        </div>        
+      </div>
     <% end %>
-  </tbody>
-</table>
+      
+  </div>
+</div>

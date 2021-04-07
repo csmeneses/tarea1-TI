@@ -17,3 +17,28 @@
 .profile-pic {
   width: 15rem;
 }
+
+.fondo {
+  background-color: rgb(226, 226, 226);
+}
+
+.my-navbar {
+  padding: 5rem;
+  background-color: #0D3E10;
+}
+
+.my-navbar-text {
+  color: white;
+}
+
+.my-navbar-text:hover {
+  color: #9c9c9c
+}
+
+.my-table-text {
+  color: #369457;
+}
+
+.my-table-text:hover {
+  color: #ffffff;
+}

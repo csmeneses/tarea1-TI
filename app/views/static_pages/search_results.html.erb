@@ -1,0 +1,11 @@
+<%= render 'layouts/navbar' %>
+<%= link_to "Atrás", :back %>
+
+<h1>Resultados</h1>
+<h4>Buscaste: <%= @character_input %></h4>
+
+<ul>
+  <% @results.each do |character| %>
+    <li><%= link_to character["name"], character_show_path(character["name"]) %></li>
+  <% end %>
+</ul>

@@ -23,7 +23,7 @@
 
 <h4>Apariciones en Breaking Bad</h4>
 <% if @results["appearance"].empty? %>
-  <p>No se registran apariciones en esta serie</p>
+  <p>No se registran apariciones en esta serie.</p>
 <% else %>
   <table class="table table-striped table-dark">
     <thead>
@@ -43,7 +43,7 @@
 
 <h4>Apariciones en Better Call Saul</h4>
 <% if @results["better_call_saul_appearance"].empty? %>
-  <p>No se registran apariciones en esta serie</p>
+  <p>No se registran apariciones en esta serie.</p>
 <% else %>
   <table class="table table-striped table-dark">
     <thead>
@@ -65,7 +65,7 @@
 
 <h4>Citas:</h4>
 <% if @quotes.empty? %>
-  <p>No se registran citas para este personaje</p>
+  <p>No se registran citas para este personaje.</p>
 <% else %>
   <ul>
     <% @quotes.each do |quote| %>

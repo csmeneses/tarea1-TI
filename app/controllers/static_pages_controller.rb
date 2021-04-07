@@ -53,4 +53,25 @@ class StaticPagesController < ApplicationController
     response = RestClient.get(@@base_url + "quote?author=#{character_name}")
     @quotes = JSON.parse(response.to_str)
   end
+
+  def character_search
+    character_input = params[:character_input]
+    redirect_to search_results_path(character_input)
+  end
+
+  def search_results
+    @character_input = params[:character_input]
+    respuestas = RestClient.get(@@base_url + "characters?name=#{@character_input}")
+    respuestas = JSON.parse(respuestas.to_str)
+    response = []
+    response += respuestas
+    pag = 1
+    until respuestas.empty?
+      respuestas = RestClient.get(@@base_url + "characters?name=#{@character_input}&limit=10&offset=#{10 * pag}")
+      respuestas = JSON.parse(respuestas.to_str)
+      response += respuestas
+      pag += 1
+    end
+    @results = response
+  end
 end

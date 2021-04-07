@@ -7,9 +7,11 @@
         <%= link_to "Temporadas", home_path, class: "nav-link" %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Personaje" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+  </div>
+  <div>
+    <%= form_with(method: :post, url: character_search_path) do |form| %>
+      <%= form.text_field :character_input, placeholder: "Personaje" %>
+      <%=form.submit 'Buscar', class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
   </div>
 </nav>

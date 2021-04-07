@@ -1,11 +1,27 @@
 <%= render 'layouts/navbar' %>
-<%= link_to "Atrás", :back %>
+<%= link_to "Atrás", :back, class: "btn btn-outline-dark my-back" %>
 
-<h1>Resultados</h1>
-<h4>Buscaste: <%= @character_input %></h4>
-
-<ul>
-  <% @results.each do |character| %>
-    <li><%= link_to character["name"], character_show_path(character["name"]) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col", align="center">
+      <h1>Resultados</h1>
+      <hr>
+      <h4>Buscaste:</h4>
+      <h5><%= @character_input %></h5>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <% @results.each do |character| %>
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= character["name"] %></h5>
+            <%= link_to "Información", character_show_path(character["name"]), class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>

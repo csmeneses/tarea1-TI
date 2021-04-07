@@ -42,3 +42,16 @@
 .my-table-text:hover {
   color: #ffffff;
 }
+
+.my-back {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 5rem;
+}
+
+.my-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}

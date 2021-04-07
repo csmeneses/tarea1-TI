@@ -50,14 +50,6 @@ class StaticPagesController < ApplicationController
     else
       @image_path = "/fotos/BCS_logo.png"
     end
-    # Si está muy lento borrar desde acá
-    # @characters = {}
-    # @results["characters"].each do |char|
-    #   response = RestClient.get(@@base_url + "characters?name=#{char}")
-    #   characters = JSON.parse(response.to_str)
-    #   result = characters[0]
-    #   @characters[char] = result["img"]
-    # end
   end
 
   def character_show

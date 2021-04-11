@@ -24,8 +24,10 @@ class StaticPagesController < ApplicationController
     serie = params[:serie]
     if serie == "bb"
       serie_name = "Breaking+Bad"
+      @nombre_serie = "Breaking Bad"
     elsif serie == "bcs"
       serie_name = "Better+Call+Saul"
+      @nombre_serie = "Better Call Saul"
     end
     response = RestClient.get(@@base_url + "episodes?series=#{serie_name}")
     episodes = JSON.parse(response.to_str)

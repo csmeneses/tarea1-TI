@@ -67,7 +67,7 @@
           </thead>
           <tbody>
             <% @results["better_call_saul_appearance"].each do |season| %>
-              <% if season != 5 %>
+              <% if season != 0 %>
                 <tr>
                   <td><%= link_to "Temporada #{season}", season_show_path(season, :bcs), class: "my-table-text" %></td>
                 </tr>

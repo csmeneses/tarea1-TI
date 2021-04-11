@@ -6,13 +6,17 @@
   <div class="row">
     <div class="col-sm">
       <h1>Episodios</h1>
-      <h2><%= @results[0]["series"] %> | Temporada <%= @results[0]["season"] %></h2>
+      <h2><%= @nombre_serie %> | Temporada <%= @season %></h2>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-4">
-      <%= image_tag "#{@serie_id}_S#{@season}.jpg", class: "img-thumbnail" %>
+      <% if File.file?("#{@serie_id}_S#{@season}.jpg") %>
+        <%= image_tag "#{@serie_id}_S#{@season}.jpg", class: "img-thumbnail" %>
+      <% else %>
+        <%= image_tag "#{@serie_id}_S#{1}.jpg", class: "img-thumbnail" %>
+      <% end %>
     </div>
     <div class="col-8">
       <table class="table table-striped table-dark">

@@ -12,11 +12,7 @@
   <br>
   <div class="row">
     <div class="col-4">
-      <% if File.file?("#{@serie_id}_S#{@season}.jpg") %>
-        <%= image_tag "#{@serie_id}_S#{@season}.jpg", class: "img-thumbnail" %>
-      <% else %>
-        <%= image_tag "#{@serie_id}_S#{1}.jpg", class: "img-thumbnail" %>
-      <% end %>
+      <%= image_tag "#{@serie_id}_S#{3}.jpg", class: "img-thumbnail" %>
     </div>
     <div class="col-8">
       <table class="table table-striped table-dark">
